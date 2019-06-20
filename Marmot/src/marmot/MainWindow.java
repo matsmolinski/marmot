@@ -11,6 +11,9 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import static java.lang.System.exit;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -24,6 +27,8 @@ public class MainWindow extends javax.swing.JFrame {
     private final JButton helpButton;
     private final JButton exitButton;
 
+    private final JLabel nameLabel;
+    private final JTextField nameField;
     /**
      * Creates new form MainWindow
      */
@@ -61,18 +66,30 @@ public class MainWindow extends javax.swing.JFrame {
         exitButton.addActionListener(this::exitButtonActionPerformed);
         add(exitButton);
         
-        newGameButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.05 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));      
-        recordButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.24 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        helpButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.43 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        authorButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.62 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        exitButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.81 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
+        newGameButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.05 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));      
+        recordButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.24 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        helpButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.43 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        authorButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.62 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        exitButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.81 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
         
-        newGameButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        recordButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        helpButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        authorButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        exitButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
+        newGameButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        recordButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        helpButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        authorButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        exitButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
         // </editor-fold> 
+        
+        nameLabel = new JLabel("Enter your name", SwingConstants.CENTER);
+        nameLabel.setVisible(false);
+        nameLabel.setBounds(0, (int) (0.2 * getUsableHeight()), (int) getUsableWidth(), (int) (0.20 * getUsableHeight()));
+        nameLabel.setFont(new Font("Console", Font.PLAIN, (int) (0.15 * getUsableHeight())));
+        add(nameLabel);
+        
+        nameField = new JTextField();
+        nameField.setVisible(false);
+        nameField.setBounds((int) (0.1 * getUsableWidth()), (int) (0.5 * getUsableHeight()), (int) (0.8 * getUsableWidth()), (int) (0.15 * getUsableHeight()));
+        nameField.setFont(new Font("Console", Font.PLAIN, (int) (0.10 * getUsableHeight())));
+        add(nameField);
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent componentEvent) {
@@ -83,24 +100,29 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void resetButtons() {
    //     System.out.println("" + (int) (0.2 * getWidth()) + " " + (int) (0.05 * getHeight()) + " " + (int) (0.6 * getWidth()) + " " + (int) (0.14 * getHeight()));
-        newGameButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.05 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));      
-        recordButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.24 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        helpButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.43 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        authorButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.62 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
-        exitButton.setBounds((int) (0.2 * getIntWidth()), (int) (0.81 * getIntHeight()), (int) (0.6 * getIntWidth()), (int) (0.14 * getIntHeight()));
+        newGameButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.05 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));      
+        recordButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.24 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        helpButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.43 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        authorButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.62 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
+        exitButton.setBounds((int) (0.2 * getUsableWidth()), (int) (0.81 * getUsableHeight()), (int) (0.6 * getUsableWidth()), (int) (0.14 * getUsableHeight()));
         
-        newGameButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        recordButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        helpButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        authorButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
-        exitButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getIntHeight())));
+        newGameButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        recordButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        helpButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        authorButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        exitButton.setFont(new Font("Console", Font.PLAIN, (int) (0.08 * getUsableHeight())));
+        
+        nameLabel.setBounds(0, (int) (0.2 * getUsableHeight()), (int) getUsableWidth(), (int) (0.20 * getUsableHeight()));
+        nameLabel.setFont(new Font("Console", Font.PLAIN, (int) (0.15 * getUsableHeight())));
+        nameField.setBounds((int) (0.1 * getUsableWidth()), (int) (0.5 * getUsableHeight()), (int) (0.8 * getUsableWidth()), (int) (0.15 * getUsableHeight()));
+        nameField.setFont(new Font("Console", Font.PLAIN, (int) (0.10 * getUsableHeight())));
     }
     
-    public int getIntWidth() {
+    public int getUsableWidth() {
         return getWidth() - 22;
     }
     
-    public int getIntHeight() {
+    public int getUsableHeight() {
         return getHeight() - 42;
     }
     /**
@@ -129,7 +151,14 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newGameButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Performowana");
+    newGameButton.setVisible(false);
+    authorButton.setVisible(false);
+    recordButton.setVisible(false);
+    helpButton.setVisible(false);
+    exitButton.setVisible(false);
+
+    nameLabel.setVisible(true);
+    nameField.setVisible(true);
     }
     
     private void recordButtonActionPerformed(ActionEvent evt) {
@@ -147,6 +176,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void exitButtonActionPerformed(ActionEvent evt) {
         exit(0);
     }
+    
     /**
      * @param args the command line arguments
      */
